@@ -1,0 +1,168 @@
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Creación de alumnos</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static "css/estilocrear.css" %}""
+
+
+  <script src="{% static "js/popper.min.js" %}"></script>
+  <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+  <script src="{% static "js/bootstrap-4.3.1.js" %}"></script>
+
+
+
+  <script> 
+
+  function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    patron = /[A-Za-z\s]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+    function soloLetras(e){
+       key = e.keyCode || e.which;
+       tecla = String.fromCharCode(key).toLowerCase();
+       letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+       especiales = "8-37-39-46";
+
+       tecla_especial = false
+       for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }
+      if (key.length == 9){
+        return false;
+      }
+    }
+  </script>
+</head>
+
+
+<body>
+
+<div id="content">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+<a class="navbar-brand" href="#"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent1">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item"> 
+<a class="nav-link" href="{%url "index" %}">Home<span class="sr-only"></span>
+</a>
+</li>
+<li class="nav-item active"> 
+<a class="nav-link" href="#">Crear Alumno<span class="sr-only">(current)</span>
+</a></li>
+<li class="nav-item"> 
+<a class="nav-link" href="{%url "alumnos" %}">Alumnos ingresados<span class="sr-only"></span>
+</a></li></ul></div></nav>
+
+<h1 align="center" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;margin-right:30px;color:lightblue; ">E.E.S.T.N°1</h1>
+
+
+<div id="tabla1">
+<div id="cabtab1">
+<h1 align="center">Crear alumno</h1>
+<form method="post"><form method="post"><input type="hidden" name="csrfmiddlewaretoken" value="0vXB1lUgQYwJbDSU62RUau7eGTb4StvLkzZrjFoXVWyX6bjekDqcaOcXsU4hamOW">
+
+<! required oninvalid="this.setCustomValidity('El DNI es incorrecto.')"
+
+
+<! ESTE ES EL DNI  ------------------ -->
+<p>
+<label for="id_dni" style="margin-left:20px;padding:30px;" class="label label-primary" name="dni" >DNI:</label> 
+<input type="number" name="dni" min="1" required="" id="id_dni"  style="margin-left:80px;"  onKeyPress="if(this.value.length==9) return false;" placeholder="Ingrese aquí su DNI" >
+</p>
+<!  --------------------------------------------------------->
+
+
+<!  ESTE ES EL APELLIDO -------------------->
+<p>
+<label for="id_apellido" style="margin-left:20px;padding:29px;" class="label label-primary">Apellido:</label> 
+<input type="text" name="apellido" maxlength="40" required="" id="id_apellido" style="margin-left:50px;" onkeypress="return check(event)" placeholder="Ingrese aquí su apellido">
+</p>
+<! -------------------------------------------------------------------------------- -->
+
+<! ESTE ES EL NOMBRE ----------------------------------------- -->
+
+<p>
+<label for="id_nombre" style="margin-left:20px;padding:30px;" class="label label-primary">Nombre:</label>
+<input type="text" name="nombre" maxlength="40" required="" id="id_nombre" style="margin-left:50px;" onkeypress="return check(event)" placeholder="Ingrese aquí su nombre">
+</p>
+<! -------------------------------- -->
+
+
+
+
+
+<! ESTA ES LA MODALIDAD  -->
+<div class="form-group row">
+<p>
+<label for="sell" class="label label-primary" style="margin-left:30px;padding:30px;">Modalidad:</label> 
+<select name="modalidad" id="sell" style="margin-left:50px;" class="selectpicker" >
+  <optgroup label="Modalidades">
+  <option value="Informatica" selected="">Informatica</option>
+  <option value="Electromecanica" >Electromecanica</option>
+
+</select></p></div></optgroup>
+<! -------------------------------------------------------------------------------- -->
+
+
+
+
+
+<!  ESTO ES DEBE PREVIAS-->
+
+
+<label for="id_debe_previas",id="label_id_previas" class="label label-primary" style="margin-left:20px;padding-left:30px;">Previas:</label> 
+<label class="switch" style="margin-left:140px;">
+<input type="checkbox" name="debe_previas" id="id_debe_previas" ><span class="slider round"> </span></label>
+
+<! ----------------------------------------------------------------------- -->
+
+
+
+
+
+
+<!  ESTO ES EL EMAIL -->
+<p>
+<label for="id_email" align="center" class="label label-primary" style="margin-left:20px;padding:30px;">Email:</label> 
+<input type="email" name="email" maxlength="254" required="" id="id_email" style="margin-left:70px;" placeholder="Ingrese aquí su email">
+
+
+</p></div></div> 
+
+
+<div id="Botones" style="margin-left:550px;margin-top:70px;">
+<input id="submit" type="submit" value="Ingresar" class="btn btn-primary" align="center" >
+<a href="{%url "index" %}"class="btn btn-primary" align="center" style="margin-left:60px;">Volver
+</a>
+</form>
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+{% load staticfiles %}
+        <!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Alumnos</title>
+
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "js/popper.min.js" %}"></script>
+    <script src="{% static "js/bootstrap-4.3.1.js" %}"></script>
+
+ <!-- var mensaje = this.setCustomValidity('El DNI no puede tener más de 9 digitos.')}</Script> --->
+    <style>
+    .carousel-inner img {
+        width: 100%;
+        height: 90%;
+      }
+    </style>
+</head>
+
+<body style="max-height:50px;overflow:hidden;">
+  
+  
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand" href="#"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> 
+<span class="navbar-toggler-icon"></span>
+</button>
+  
+<div class="collapse navbar-collapse" id="navbarSupportedContent1">
+<ul class="navbar-nav mr-auto">
+
+<li class="nav-item active"> 
+<a class="nav-link" href="{%url "index" %}">Home
+<span class="sr-only">(current)</span>
+</a></li>
+
+<li class="nav-item">
+<a class="nav-link" href="{%url "crear_alumno" %}">Crear Alumno
+<span class="sr-only"></span>
+</a>
+</li>
+      
+<li class="nav-item"> 
+<a class="nav-link" href="{%url "alumnos" %}">Alumnos ingresados
+<span class="sr-only">
+</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+
+
+
+<div id="demo" class="carousel slide" data-ride="carousel" >
+<ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+</ul>
+
+<div class="carousel-inner" style="margin-bottom:50px;">
+
+<div class="carousel-item active">
+<img src="{% static "Imagenes/12.jpg" %}" alt="Welcome" width="1100" height="500">
+
+<div class="carousel-caption" style="margin-bottom:50px;">
+<h2 style="margin-bottom:50px;"  style="font-face:Helvetica;">Bienvenido a la página de ingreso de alumnos</h2>
+<h6 style="margin-bottom:50px;" >Utiliza los botones o la barra de navegación!</h6>
+</div> 
+
+</div>
+
+<div class="carousel-item" style="margin-bottom:50px;">
+<img src="{% static "Imagenes/12.jpg" %}" alt="AlumnosI" width="1100" height="500">
+
+<div class="carousel-caption" style="margin-bottom:50px;">
+<h3>Alumnos Ingresados</h3 style="margin-bottom:50px;">
+<p style="margin-bottom:50px;"><a href="{%url "alumnos" %}" style="color:red;">
+<button align="center" class="btn-primary" style="margin-bottom:50px;">Click Here!</button>
+</a>
+</p>
+</div>   
+</div>
+
+
+<div class="carousel-item" style="margin-bottom:50px;">
+<img src="{% static "Imagenes/12.jpg" %}" alt="CrearAlumno" width="1100" height="500">
+
+<div class="carousel-caption"">
+<h3>Crear un alumno nuevo</h3>
+<p style="margin-bottom:120px;">
+<a href="{%url "crear_alumno" %}">
+<button style="margin-bottom:50px;" align="center" class="btn-primary">Click Here!</button>
+</a>
+</p>
+
+</div>   
+</div>
+</div>
+
+<a style="margin-bottom:50px;" class="carousel-control-prev" href="#demo" data-slide="prev">
+<span class="carousel-control-prev-icon"></span>
+</a>
+<a style="margin-bottom:50px;"class="carousel-control-next" href="#demo" data-slide="next">
+<span style="margin-bottom:50px;" class="carousel-control-next-icon"></span>
+</a>
+</div>
+
+</body>
+</html>

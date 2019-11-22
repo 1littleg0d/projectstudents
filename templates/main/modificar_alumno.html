@@ -1,0 +1,127 @@
+{% load staticfiles %}
+<html>
+<head> 
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Edición de alumnos</title>
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static "css/estilocrear.css" %}">	
+
+
+      <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
+      <script src="{% static "js/popper.min.js" %}"></script>
+      <script src="{% static "js/bootstrap-4.3.1.js" %}"></script>
+        
+  
+</head>
+  
+<body>
+
+<header>
+<h2 class="text-center text-light" align="center">
+<span class="badge badge-danger">Modificación de alumnos</span>
+</h2>
+</header>
+
+<h1 align="center" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif;color:lightblue; ">E.E.S.T.N°1</h1>
+
+<div id="tabla1">
+<div id="cabtab1">
+
+<h1 align="center">Editar alumno</h1>
+
+
+
+<form method="post">
+
+<input type="hidden" name="csrfmiddlewaretoken" value="6JFyE9To4UiYMF2Wpr8wxS9tARvGVErlqNHoWtn59SkcHdtgD2HOxcecmSoTdxKw">
+<!--- DNI  -->
+ <p>
+<label for="id_dni" style="margin-left:20px;padding:30px;" class="label label-primary" name="dni">DNI:</label> 
+<input type="number" name="dni"  min="0" readonly="" value=
+ "{{ form.initial.dni }}" required="" id="id_dni" style="margin-left:80px;">
+</p>
+
+
+<!--- Apellido  -->
+<p>
+<label for="id_apellido" style="margin-left:20px;padding:29px;" class="label label-primary">Apellido:</label> 
+<input type="text" name="apellido" value="{{ form.initial.apellido }}" maxlength="40" required="" id="id_apellido" style="margin-left:50px;">
+</p>
+
+<!--- Nombre  -->
+<p>
+<label for="id_nombre" style="margin-left:20px;padding:30px;" class="label label-primary">Nombre:</label>
+<input type="text" name="nombre" value="{{ form.initial.nombre }}" maxlength="40" required="" id="id_nombre" style="margin-left:50px;">
+</p>
+
+
+
+<div class="form-group">
+
+<div class="form-group row">
+<!--- Modalidad  -->
+<p>
+<label for="sell" class="label label-primary" style="margin-left:30px;padding:30px;">Modalidad:</label> 
+<select name="modalidad" id="sell" style="margin-left:50px;" class="selectpicker">
+   <optgroup label="Modalidades">
+  {% ifequal form.initial.modalidad "Informatica" %}
+  <option value="Informatica" selected="">Informatica</option>
+  <option value="Electromecanica" >Electromecanica</option>
+{% else %}
+  <option value="Electromecanica" selected="">Electromecanica</option>
+  <option value="Informatica" >Informatica</option>
+{% endifequal %}
+</select>
+</p>
+</div>
+</optgroup>
+
+
+<!--- Previas  -->
+
+<label for="id_debe_previas"class="label label-primary" style="margin-left:20px;padding-left:30px;">Previas:</label>
+
+<label class="switch" style="margin-left:140px;">
+
+{% if form.initial.debe_previas %}
+ <input type="checkbox" name="debe_previas" id="id_debe_previas"  checked>
+<span class="slider round"> </span></label>
+{% else %}
+<input type="checkbox" name="debe_previas" id="id_debe_previas" >
+<span class="slider round"> </span></label>
+{% endif %}
+
+
+
+
+
+
+
+
+<! ----------------------------------------------------------------------- -->
+
+
+
+<!--- Email  -->
+<p>
+<label for="id_email" class="label label-primary" style="margin-left:20px;padding:30px;">Email:</label> 
+<input type="email" name="email" value="{{ form.initial.email }}" maxlength="254" required="" id="id_email"style="margin-left:70px;">
+</p>
+</div></div>
+
+<div id="Botones" style="margin-left:200px;margin-top:70px;display:inline;">
+
+<input type="submit" value="Editar" class="btn btn-primary" align="center">
+<a href="{%url "alumnos" %}" class="btn btn-primary" align="center" style="margin-left:60px;">Volver 
+</a> 
+
+</form>
+
+
+</div>
+</div>
+</body>
+</html>
