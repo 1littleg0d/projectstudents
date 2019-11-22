@@ -1,2 +1,2 @@
 # projectstudents
-Proyecto de Alumnos
+Proyecto de Alumnos para Laboratorio de Aplicaciones
